@@ -50,3 +50,4 @@ build/
 /.idea/workspace.xml
 /.idea/inspectionProfiles/
 /.idea/codeStyles/
+/src/main/resources/database.properties
