@@ -1,5 +1,6 @@
 package com.library.app.config;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -29,15 +30,10 @@ import java.util.Objects;
 @ComponentScan("com.library.app") // путь до контроллеров
 @EnableWebMvc
 @PropertySource("classpath:database.properties")
+@AllArgsConstructor
 public class SpringConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
     private final Environment environment;
-
-    @Autowired
-    public SpringConfig(ApplicationContext applicationContext, Environment environment) {
-        this.applicationContext = applicationContext;
-        this.environment = environment;
-    }
 
     /**
      * 1. Создаем разрешитель шаблонов
@@ -88,8 +84,9 @@ public class SpringConfig implements WebMvcConfigurer {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(Objects.requireNonNull(environment.getProperty("driver")));
         dataSource.setUrl(environment.getProperty("url"));
-        dataSource.setUsername(environment.getProperty("username"));
-        dataSource.setPassword(environment.getProperty("password"));
+        dataSource.setUsername(environment.getProperty("sql_username"));
+        dataSource.setPassword(environment.getProperty("sql_password"));
+
         return dataSource;
     }
 

@@ -17,10 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/people")
 @AllArgsConstructor
 public class CtrlPeople {
-    private PersonDAO personDAO;
-
+    private final PersonDAO personDAO;
     /**
-     *Получам всех людей из DAO и передаем на отображение в представление
+     * Получам всех людей из DAO и передаем на отображение в представление
      */
     @GetMapping()
     public String index(Model model) {
@@ -29,7 +28,7 @@ public class CtrlPeople {
     }
 
     /**
-     *Получаем одного человека по id из DAO и передаем на отображение в представление
+     * Получаем одного человека по id из DAO и передаем на отображение в представление
      */
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
