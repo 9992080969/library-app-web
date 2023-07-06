@@ -5,10 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 /**
  * Сущность пользователя
@@ -20,11 +20,18 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 public class Person {
-    private int id;
+    private int people_id;
+
     @NotEmpty(message = "Пожалуйста, введите полное имя")
     @Size(max = 100, message = "Слишком длинное имя")
     private String fullName;
+
     @Min(value = 1900, message = "Год рождения должен быть больше 1900")
     @Max(value = 2023, message = "Год рождения должен быть меньше 2023")
     private int birthYear;
+
+    @Override
+    public String toString() {
+        return people_id + ", " + fullName + ", " + birthYear;
+    }
 }
