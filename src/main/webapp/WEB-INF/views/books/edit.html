@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title>Title</title>
+	<title>Редактировать книгу</title>
 </head>
 <body>
-<form th:method="PATCH" th:action="@{/people/{id}(id=${person.getPeople_id()})}" th:object="${person}">
-  <label for="fullName">Enter name: </label>
-  <input type="text" th:field="*{fullName}" id="fullName"/>
-  <div style="color:red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Name Error</div>
+<form th:method="PATCH" th:action="@{/books/{id}(id=${book.getBooks_id()})}" th:object="${book}">
+  <label for="title">Введите название книги: </label>
+  <input type="text" th:field="*{title}" id="title"/>
+  <div style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</div>
   <br/>
-  <label for="birthYear">Enter age: </label>
-  <input type="text" th:field="*{birthYear}" id="birthYear"/>
-  <div style="color:red" th:if="${#fields.hasErrors('birthYear')}" th:errors="*{birthYear}">Age Error</div>
+  <label for="author">Введите полное имя автора: </label>
+  <input type="text" th:field="*{author}" id="author"/>
+  <div style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author Error</div>
   <br/>
-  <input type="submit" value="Update!"/>
+  <label for="bookYear">Введите год публикации: </label>
+  <input type="text" th:field="*{bookYear}" id="bookYear"/>
+  <div style="color:red" th:if="${#fields.hasErrors('bookYear')}" th:errors="*{bookYear}">Age Error</div>
+  <br/>
+  <input type="submit" value="Принять изменения"/>
 </form>
 </body>
 </html>

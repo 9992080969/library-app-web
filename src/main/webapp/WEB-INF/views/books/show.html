@@ -2,15 +2,17 @@
 <html lang="ru">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title th:text="${person.getFullName()}">Show</title>
+	<title th:text="${book.getTitle()}">Show</title>
 </head>
 <body>
-<p th:text="${person.getFullName() + ', ' + person.getBirthYear()}">VALUE</p>
-<p th:text="${'ID: ' + person.getPeople_id()}">VALUE</p>
+<p th:text="${'Наименование: ' + book.getTitle()}">VALUE</p>
+<p th:text="${'Автор: ' + book.getAuthor()}">VALUE</p>
+<p th:text="${'Год публикации: ' + book.getBookYear()}">VALUE</p>
+<p th:text="${'ID: ' + book.getBooks_id()}">VALUE</p>
 
-<a th:href="@{/people/{id}/edit(id=${person.getPeople_id()})}">Редактировать профиль</a>
+<a th:href="@{/books/{id}/edit(id=${book.getBooks_id()})}">Редактировать профиль</a>
 
-<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getPeople_id()})}">
+<form th:method="DELETE" th:action="@{/books/{id}(id=${book.getBooks_id()})}">
   <input type="submit" value="Удалить"/>
 </form>
 </body>

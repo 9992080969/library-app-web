@@ -2,24 +2,30 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title>New</title>
+	<title>Добавить новую книгу</title>
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/people}" th:object="${person}">
-	<label for="fullName">Введите полное имя: </label>
-	<input type="text" th:field="*{fullName}" id="fullName"/>
+<form th:method="POST" th:action="@{/books}" th:object="${book}">
+	<label for="title">Введите название книги: </label>
+	<input type="text" th:field="*{title}" id="title"/>
 	<div style="color:red"
-	     th:if="${#fields.hasErrors('fullName')}"
-	     th:errors="*{fullName}">Name Error</div>
+	     th:if="${#fields.hasErrors('title')}"
+	     th:errors="*{title}">Name Error</div>
 	<br/>
-	<label for="birthYear">Введите год рождения: </label>
-	<input type="text" th:field="*{birthYear}" id="birthYear"/>
+	<label for="author">Введите полное имя автора: </label>
+	<input type="text" th:field="*{author}" id="author"/>
 	<div style="color:red"
-	     th:if="${#fields.hasErrors('birthYear')}"
-	     th:errors="*{birthYear}">Age Error</div>
+	     th:if="${#fields.hasErrors('author')}"
+	     th:errors="*{author}">Age Error</div>
 	<br/>
-	<input type="submit" value="Зарегистрировать"/>
+	<label for="bookYear">Введите год публикации: </label>
+	<input type="text" th:field="*{bookYear}" id="bookYear"/>
+	<div style="color:red"
+		 th:if="${#fields.hasErrors('bookYear')}"
+		 th:errors="*{bookYear}">Age Error</div>
+	<br/>
+	<input type="submit" value="Добавить книгу"/>
 </form>
 
 </body>
